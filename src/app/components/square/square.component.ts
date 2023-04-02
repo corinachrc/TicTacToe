@@ -27,19 +27,21 @@ export class SquareComponent {
   }
   toType=''
     addXorO(x:number,y:number){
-      if(this.action.winner==""){
+      if(this.action.winner.length==0){
         if(this.action.round%2!=0){
           this.action.addX(x,y)
+          this.action.checkIfWin(this.action.board)
           this.returnTurn()
           this.toType=this.action.board[x][y]
-          this.action.checkIfWin(this.action.board)
+
           this.displayMessage()
 
         }else{
           this.action.addO(x,y)
           this.returnTurn()
-          this.toType=this.action.board[x][y]
           this.action.checkIfWin(this.action.board)
+          this.toType=this.action.board[x][y]
+
           this.displayMessage()
 
         }

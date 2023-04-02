@@ -33,23 +33,22 @@ export class ActionsService {
 }
 
 checkIfWin(myboard:string[][]){
-for(let i=0;i<3;i++){
-
+for(let i=0;i<myboard.length;i++){
     if((myboard[i][0]==myboard[i][1])&&(myboard[i][0]==myboard[i][2])){
       this.winner=myboard[i][0]
       this.winnerLine="linia "+(i+1)
       myboard[i]
-      break
-    }
-  }
-for(let j=0;j<3;j++){
-    if((myboard[0][j]==myboard[1][j])&&(myboard[0][j]==myboard[2][j])){
-      this.winner=myboard[0][j]
-      this.winnerLine="coloana "+(j+1)
-      break
-    }
-}
 
+    }
+    for(let j=0;j<myboard[i].length;j++){
+      if((myboard[0][j]==myboard[1][j])&&(myboard[1][j]==myboard[2][j])){
+        this.winner=myboard[0][j]
+        this.winnerLine="coloana "+(j+1)
+
+      }
+  }
+
+}
 if((myboard[0][0]==myboard[1][1])&&(myboard[0][0]==myboard[2][2])){
   this.winner=myboard[0][0]
   this.winnerLine="diagonala 1"
@@ -62,4 +61,5 @@ if((myboard[0][2]==myboard[1][1])&&(myboard[0][2]==myboard[2][0])){
       this.message="\""+this.winner+"\"" + " a castigat pe "+ this.winnerLine
     }
 }
+
 }
