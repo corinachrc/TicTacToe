@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>X si O</h1>
+  <div  class="headerTurn" *ngIf="!message">{{currentPlayer}}</div>
+  <div class="headerWinner"  *ngIf="message">{{message}}</div>
+  <div class="squares"*ngFor="let oneRow of [1,2,3];let x=index">
+          <app-square *ngFor="let oneColumn of [1,2,3]; let y=index"
+          [x]="x"
+          [y]="y"
+          (messageEvent)="displayTheWinner($event)" (turnEvent)="displayTurn($event)"></app-square>
+
+  </div>
+  <button class="resetButton" (click)="reset()">Restart</button>
+</div>
+
