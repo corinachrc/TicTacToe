@@ -27,24 +27,20 @@ export class SquareComponent {
   }
   toType=''
     addXorO(x:number,y:number){
-      if(this.action.winner.length==0){
+      if(this.action.isWinner==false){
+        console.log(this.action.board)
+        console.log(this.action.isWinner)
         if(this.action.round%2!=0){
-          this.action.addX(x,y)
-          this.action.checkIfWin(this.action.board)
-          this.returnTurn()
-          this.toType=this.action.board[x][y]
-
-          this.displayMessage()
-
+          this.action.addX(x,y);
+          this.toType=this.action.board[x][y];
+          this.returnTurn();
         }else{
           this.action.addO(x,y)
-          this.returnTurn()
-          this.action.checkIfWin(this.action.board)
           this.toType=this.action.board[x][y]
-
-          this.displayMessage()
-
+          this.returnTurn()
         }
+        this.action.checkIfWin()
+        this.displayMessage()
       }
 
   }
